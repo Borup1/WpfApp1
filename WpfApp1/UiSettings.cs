@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.Specialized;
 using System.Configuration;
 using System.Linq;
 using System.Text;
@@ -12,9 +13,9 @@ namespace WpfApp1
     {
         [ConfigurationProperty("language", DefaultValue = "English")]
         public string Language
-        { 
-          get { return (String)this["language"]; }
-          set { this["language"] = value; }              
+        {
+            get { return (String)this["language"]; }
+            set { this["language"] = value; }
         }
 
         [ConfigurationProperty("Theme", DefaultValue = "Light")]
@@ -48,5 +49,21 @@ namespace WpfApp1
 
         }
 
+        public static string GetSelectedTheme()
+        {
+            {
+                var uiSettings = ConfigurationManager.GetSection("UiSettings") as UiSettings;
+
+                if (uiSettings != null)
+                {
+                    return uiSettings.Theme;
+                }
+
+                // Default theme if UiSettings section is not found.
+                return "Dark";
+            }
+
+
+        }
     }
 }

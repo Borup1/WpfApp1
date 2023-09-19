@@ -21,33 +21,22 @@ namespace WpfApp1
     /// </summary>
     public partial class MainWindow : Window
     {
-        Configuration AppConfig = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+       
         public MainWindow()
-        {
-            string[] Theme = new string[] { "Dark", "Light", "Green", "Blue", "Yellow" };
-            string[] Languages = new string[] { "English", "Dansk" };
-
+        {            
             InitializeComponent();
-
-            if (AppConfig.Sections["UiSettings"] is null)
-            {
-                AppConfig.Sections.Add("UiSettings", new UiSettings());
-
-            }
-
-            var UiSettingSection = AppConfig.GetSection("UiSettings");
-
-            this.DataContext = UiSettingSection;
-
+            Loaded += MainWindow_Loaded;
         }
 
-
+        // Opens the Theam Window
         private void Theme(object sender, RoutedEventArgs e)
         { theme sw = new theme(); sw.Show(); }
 
+        //EXit The Application 
         private void Exit(object sender, RoutedEventArgs e)
         { App.Current.Shutdown(); }
 
+        // Let+s Us move the window around 
         private void MainWindow_OnMouseDown(object sender, MouseButtonEventArgs e)
         {
             if (e.LeftButton == MouseButtonState.Pressed)
@@ -55,13 +44,12 @@ namespace WpfApp1
                 DragMove();
             }
         }
-
+        
         private void MainWindow_Loaded(object sender, RoutedEventArgs e)
         {
             // Apply the selected theme from the configuration settings
-            string selectedTheme = UiSettings.GetSelectedTheme(); // Replace with the actual method to retrieve the selected theme
+            string selectedTheme = UiSettings.GetSelectedTheme();
 
-            // Assuming UiSettings.GetSelectedTheme() returns the selected theme as a string
             switch (selectedTheme)
             {
                 case "Dark":
@@ -84,5 +72,6 @@ namespace WpfApp1
                     break;
             }
         }
-        
+    }
+
 }
