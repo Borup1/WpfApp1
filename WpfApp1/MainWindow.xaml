@@ -1,0 +1,40 @@
+﻿<Window x:Class="WpfApp1.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp1"
+        mc:Ignorable="d"
+        Title="TEST APP" Height="450" Width="800" WindowStyle="ThreeDBorderWindow"
+        MouseDown="MainWindow_OnMouseDown">
+
+
+    <Grid Background="{DynamicResource Background}">
+
+        <!--
+       
+       -->
+
+        
+            <Menu DockPanel.Dock="Top" Background="Black" Foreground="white"  BorderBrush="Black" Width="50" HorizontalAlignment="Left" VerticalAlignment="Top">
+
+
+                <MenuItem Header="Menu">
+                    <MenuItem Header="Theme"  Background="Black" Foreground="White" BorderBrush="Black" Click="Theme"/>
+                    <MenuItem Header="_Exit"  Background="Black" Foreground="White" BorderBrush="Black" Click="Exit"   />
+                </MenuItem>
+
+
+            </Menu>
+
+
+
+
+
+        <Button HorizontalAlignment="Left" Margin="160,50,0,0"  VerticalAlignment="Top" Background="#FFE40808" Width="24" Height="24"/>
+        <Button HorizontalAlignment="Left" Margin="160,100,0,0" VerticalAlignment="Top" Background="#FFF3DF00" Width="24" Height="24"/>
+        <Button HorizontalAlignment="Left" Margin="160,150,0,0" VerticalAlignment="Top" Background="#FF42EF05" Width="24" Height="24"/>
+    
+</Grid>
+    
+</Window>
